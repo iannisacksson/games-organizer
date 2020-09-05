@@ -1,6 +1,9 @@
+import 'dotenv/config';
 import express from 'express';
 
-import routes from './routes';
+import routes from '@shared/routes';
+
+import '@shared/database';
 
 const app = express();
 
