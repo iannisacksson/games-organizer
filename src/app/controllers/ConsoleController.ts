@@ -6,7 +6,7 @@ import ListAllConsolesService from '@app/services/ListAllConsolesService';
 const createConsoleService = new CreateConsoleService();
 const listAllConsolesService = new ListAllConsolesService();
 
-export default class ForgotPasswordController {
+export default class ConsoleController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, company } = request.body;
 

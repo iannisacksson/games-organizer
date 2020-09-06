@@ -1,12 +1,10 @@
 import Console from '@app/schemas/Console';
 import MongoMock from '@shared/tests/MongoMock';
-import CreateConsoleService from './CreateConsoleService';
 import ListAllConsolesService from './ListAllConsolesService';
 
-let createConsole: CreateConsoleService;
 let listAllConsoles: ListAllConsolesService;
 
-describe('CreateConsole', () => {
+describe('ListConsole', () => {
   beforeAll(async () => {
     await MongoMock.connect();
   });
@@ -18,12 +16,11 @@ describe('CreateConsole', () => {
   beforeEach(async () => {
     await Console.deleteMany({});
 
-    createConsole = new CreateConsoleService();
     listAllConsoles = new ListAllConsolesService();
   });
 
   it('should be able to list all consoles', async () => {
-    await createConsole.execute({
+    await Console.create({
       name: 'Nitendo 64',
       company: 'Nitendo',
     });
