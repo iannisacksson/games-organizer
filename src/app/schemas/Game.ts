@@ -11,12 +11,10 @@ const Game: Schema = new Schema(
       type: String,
       required: true,
     },
-    console_id: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Console',
-      },
-    ],
+    console_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Console',
+    },
   },
   {
     timestamps: true,

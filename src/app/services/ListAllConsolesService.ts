@@ -1,5 +1,4 @@
 import Console, { IConsole } from '@app/schemas/Console';
-// import AppError from '@shared/errors/AppError';
 
 type Response = IConsole[];
 
