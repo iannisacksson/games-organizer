@@ -1,5 +1,5 @@
-// For a detailed explanation regarding each configuration property, visit:
-// https://jestjs.io/docs/en/configuration.html
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.json');
 
 module.exports = {
   // All imported modules in your tests should be mocked automatically
@@ -19,11 +19,11 @@ module.exports = {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
-    "<rootDir>/src/app/services/*.ts"
+    "<rootDir>/src/**/services/*.ts"
   ],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "__tests__/coverage",
+  coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -79,7 +79,7 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/src/" }),
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -135,7 +135,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "node",
+  testEnvironment: "node",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -145,7 +145,7 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/*.spec.ts",
+    "<rootDir>/src/**/*.spec.ts",
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped

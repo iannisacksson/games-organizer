@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import gamesRouter from './games.routes';
+import consolesRouter from './consoles.routes';
 
 const routes = Router();
 
-routes.use('/games', gamesRouter);
+routes.use('/consoles', consolesRouter);
 
 export default routes;
