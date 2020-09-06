@@ -36,7 +36,7 @@ describe('List Games By Console', () => {
       console_id: console.id,
     });
 
-    const consoles = await listAllGamesByConsole.execute(console.name);
+    const consoles = await listAllGamesByConsole.execute(console.id);
 
     expect(consoles).toEqual(
       expect.arrayContaining([
