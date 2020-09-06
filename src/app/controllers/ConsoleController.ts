@@ -12,4 +12,12 @@ export default class ForgotPasswordController {
 
     return response.status(200).json(console);
   }
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const { name, company } = request.body;
+
+    const consoles = await createConsoleService.execute({ name, company });
+
+    return response.status(200).json(consoles);
+  }
 }

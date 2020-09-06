@@ -1,10 +1,10 @@
-import AppError from '@shared/errors/AppError';
-
 import Console from '@app/schemas/Console';
 import MongoMock from '@shared/tests/MongoMock';
 import CreateConsoleService from './CreateConsoleService';
+import ListAllConsolesService from './ListAllConsolesService';
 
 let createConsole: CreateConsoleService;
+let listAllConsoles: ListAllConsolesService;
 
 describe('CreateConsole', () => {
   beforeAll(async () => {
@@ -21,34 +21,20 @@ describe('CreateConsole', () => {
     createConsole = new CreateConsoleService();
   });
 
-  it('should be able to register a new console', async () => {
+  it('should be able to list all consoles', async () => {
     await createConsole.execute({
       name: 'Nitendo 64',
       company: 'Nitendo',
     });
 
-    const list = await Console.find({});
+    const consoles = await listAllConsoles.execute();
 
-    expect(list).toEqual(
+    expect(consoles).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           name: 'Nitendo 64',
         }),
       ]),
     );
-  });
-
-  it('should not be able to create a new console with same name from another', async () => {
-    await createConsole.execute({
-      name: 'Nitendo 64',
-      company: 'Nitendo',
-    });
-
-    await expect(
-      createConsole.execute({
-        name: 'Nitendo 64',
-        company: 'Nitendo',
-      }),
-    ).rejects.toBeInstanceOf(AppError);
   });
 });
