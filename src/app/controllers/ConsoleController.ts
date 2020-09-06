@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 
 import CreateConsoleService from '@app/services/CreateConsoleService';
+import ListAllConsolesService from '@app/services/ListAllConsolesService';
 
 const createConsoleService = new CreateConsoleService();
+const listAllConsolesService = new ListAllConsolesService();
 
 export default class ForgotPasswordController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -14,9 +16,7 @@ export default class ForgotPasswordController {
   }
 
   public async index(request: Request, response: Response): Promise<Response> {
-    const { name, company } = request.body;
-
-    const consoles = await createConsoleService.execute({ name, company });
+    const consoles = await listAllConsolesService.execute();
 
     return response.status(200).json(consoles);
   }
