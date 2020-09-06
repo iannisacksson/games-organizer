@@ -19,6 +19,7 @@ describe('CreateConsole', () => {
     await Console.deleteMany({});
 
     createConsole = new CreateConsoleService();
+    listAllConsoles = new ListAllConsolesService();
   });
 
   it('should be able to list all consoles', async () => {
