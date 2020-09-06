@@ -6,5 +6,6 @@ const consolesRouter = Router();
 const gameController = new GameController();
 
 consolesRouter.post('/', gameController.create);
+consolesRouter.get('/', gameController.index);
 
 export default consolesRouter;
