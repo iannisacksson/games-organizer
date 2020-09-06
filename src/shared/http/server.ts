@@ -1,5 +1,7 @@
 import 'dotenv/config';
+
 import express, { Request, Response, NextFunction } from 'express';
+import 'express-async-errors';
 
 import routes from '@shared/http/routes';
 import AppError from '@shared/errors/AppError';

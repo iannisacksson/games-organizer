@@ -1,4 +1,5 @@
 import Console from '@app/schemas/Console';
+import AppError from '@shared/errors/AppError';
 
 interface IRequest {
   name: string;
